@@ -2,6 +2,7 @@
   "name": "task-board-pro",
   "version": "0.0.0",
   "scripts": {
+    "e2e": "cypress open",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -29,6 +30,7 @@
     "@angular/cli": "^17.3.11",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
+    "cypress": "^14.0.0",
     "daisyui": "^4.12.23",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
