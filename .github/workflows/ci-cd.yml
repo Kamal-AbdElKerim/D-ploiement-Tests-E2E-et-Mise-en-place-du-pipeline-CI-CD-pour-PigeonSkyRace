@@ -9,32 +9,46 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build-test-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Vérifiez le code
+      # Étape 1 : Cloner le code
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Configuration de Node.js
+      # Étape 2 : Installer Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Installation des dépendances
+      # Étape 3 : Installer les dépendances
       - name: Install Dependencies
         run: npm install
 
-      # Lancer le build Angular
+      # Étape 4 : Construire l'application Angular
       - name: Build Angular App
         run: npm run build -- --prod
 
-      # Exécution des tests unitaires
+      # Étape 5 : Lancer les tests unitaires
       - name: Run Unit Tests
         run: npm run test -- --watch=false --no-progress
 
-      # Exécution des tests E2E
+      # Étape 6 : Lancer les tests E2E
       - name: Run E2E Tests
         run: npm run e2e
+
+      # Étape 7 : Construire et publier l'image Docker
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: username/angular-app:latest
+
+      # Étape 8 : Déploiement
+      - name: Deploy to Vercel
+        run: vercel --prod
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
