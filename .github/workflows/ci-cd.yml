@@ -29,7 +29,7 @@ jobs:
 
       # Étape 4 : Construire l'application Angular
       - name: Build Angular App
-        run: npm run build -- --prod
+        run: npm run build -- --configuration=production
 
       # Étape 5 : Lancer les tests unitaires
       - name: Run Unit Tests
