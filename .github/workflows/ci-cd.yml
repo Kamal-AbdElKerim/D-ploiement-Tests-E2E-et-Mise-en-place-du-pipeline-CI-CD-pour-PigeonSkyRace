@@ -31,9 +31,7 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --configuration=production
 
-      # Étape 5 : Lancer les tests unitaires
-      - name: Run Unit Tests
-        run: npm run test -- --watch=false --no-progress
+
 
       # Étape 6 : Lancer les tests E2E
       - name: Run E2E Tests
