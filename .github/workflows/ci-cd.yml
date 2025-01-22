@@ -25,7 +25,16 @@ jobs:
 
       # Étape 3 : Installer les dépendances système pour Cypress
       - name: Install Dependencies for Cypress
-        run: sudo apt-get update && sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libgtk2.0-0 \
+            libgtk-3-0 \
+            libgbm-dev \
+            libnotify-dev \
+            libnss3 \
+            libxss1 \
+            libasound2 libasound2-data || echo "Skipping libasound2"
 
       # Étape 4 : Installer les dépendances du projet
       - name: Install Dependencies
