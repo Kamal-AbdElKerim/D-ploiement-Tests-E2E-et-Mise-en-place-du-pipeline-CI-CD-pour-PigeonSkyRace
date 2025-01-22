@@ -2,7 +2,7 @@
   "name": "task-board-pro",
   "version": "0.0.0",
   "scripts": {
-    "e2e": "cypress open",
+    "e2e": "cypress run",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

@@ -44,7 +44,12 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --configuration=production
 
-
+      # Étape 6 : Installer et démarrer un serveur X virtuel pour Cypress
+      - name: Setup Virtual Display
+        run: |
+          sudo apt-get install -y xvfb
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1024x768x16 > /dev/null 2>&1 &
 
       # Étape 7 : Lancer les tests E2E
       - name: Run E2E Tests
